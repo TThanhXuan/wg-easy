@@ -110,8 +110,18 @@ PostDown = ${WG_POST_DOWN}
 # Client: ${client.name} (${clientId})
 [Peer]
 PublicKey = ${client.publicKey}
-PresharedKey = ${client.preSharedKey}
-AllowedIPs = ${client.address}/32`;
+PresharedKey = ${client.preSharedKey}`
+if(client.name == 'h96')
+{
+  result +=`
+AllowedIPs = ${client.address}/32, 192.168.7.1/24`;
+}
+else
+{
+  result +=`
+AllowedIPs = ${client.address}/32`;  
+}
+
     }
 
     debug('Config saving...');
